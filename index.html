@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto orientación vocacional</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght=400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <img src="imagen%20ceti.png" alt="Logo CETI" class="logo-ceti" onerror="this.src='https://via.placeholder.com/150x50?text=CETI+LOGO'">
+            <h4 style="font-size: 0.85rem; color: rgba(255,255,255,0.6);">PROYECTO DECIDE TU FUTURO</h4>
+        </div>
+        <ul class="sidebar-menu">
+            <li class="sidebar-item active" id="menu-home"><a onclick="regresarMenu()"><i class="fa-solid fa-gauge"></i> Panel Inicio</a></li>
+            <li class="sidebar-item" id="menu-test"><a onclick="abrirTestDesdeMenu()"><i class="fa-solid fa-clipboard-list"></i> Test Vocacional</a></li>
+            <li class="sidebar-item"><a onclick="window.open('https://www.colomos.ceti.mx', '_blank')"><i class="fa-solid fa-graduation-cap"></i> Admisiones</a></li>
+        </ul>
+
+        <div id="sidebar-empresas" class="sidebar-empresas-contenedor hidden">
+            <h3 class="sidebar-empresas-titulo">🏢 Empresas Destacadas</h3>
+            
+            <div class="sidebar-carrera-grupo">
+                <span class="carrera-tag-mini industrial-color">Industrial</span>
+                <p class="empresas-lista-texto">Femsa, Jabil, Flextronics, Amazon Logistics</p>
+            </div>
+
+            <div class="sidebar-carrera-grupo">
+                <span class="carrera-tag-mini software-color">Software</span>
+                <p class="empresas-lista-texto">Google, Oracle, IBM, Tata (TCS), Startups</p>
+            </div>
+
+            <div class="sidebar-carrera-grupo">
+                <span class="carrera-tag-mini mecatronica-color">Mecatrónica</span>
+                <p class="empresas-lista-texto">Intel, Bosch, Tesla, Continental, Honda</p>
+            </div>
+
+            <div class="sidebar-carrera-grupo">
+                <span class="carrera-tag-mini bioquimica-color">Bioquímica</span>
+                <p class="empresas-lista-texto">Pisa Farmacéutica, Nestlé, Alpura, Laboratorios</p>
+            </div>
+
+            <div class="sidebar-carrera-grupo">
+                <span class="carrera-tag-mini civil-color">Civil</span>
+                <p class="empresas-lista-texto">ICA Constructora, Cemex, SEDATU, Despachos</p>
+            </div>
+
+            <div class="sidebar-carrera-grupo">
+                <span class="carrera-tag-mini electronica-color">D. Electrónico</span>
+                <p class="empresas-lista-texto">HP, NXP Semiconductors, Foxconn, Sanmina</p>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        
+        <div class="dashboard-header" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
+            <div>
+                <h1>Orientación Vocacional CETI</h1>
+                <p>Visualiza tu futuro profesional y elige con seguridad tu ingeniería.</p>
+            </div>
+            <div style="background: #ffffff; padding: 8px 16px; border-radius: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); display: flex; align-items: center; gap: 8px; font-weight: bold; color: #1e293b;">
+                <i class="fa-solid fa-eye" style="color: #1b4d6b; font-size: 1.1rem;"></i>
+                <span id="contador-visitas">...</span>
+            </div>
+        </div>
+
+        <div id="seccion-video" class="card-panel">
+            <div class="video-texto">
+                <h3><i class="fa-solid fa-circle-play" style="color: #ff0000;"></i> ¿Pensando en estudiar Ingeniería?</h3>
+                <p><strong>¿Vale la pena estudiar una ingeniería?</strong> Te lo mostramos en nuestro video motivacional.</p>
+            </div>
+            <a href="https://www.youtube.com/watch?v=FaKy6mEI3Tk" target="_blank" class="btn-link-video">
+                <i class="fa-brands fa-youtube"></i> Ver Video
+            </a>
+        </div>
+
+        <div id="seccion-desercion" class="card-panel">
+            <div class="tarjeta-desercion-header">
+                <h3><i class="fa-solid fa-chart-pie" style="color: var(--naranja-ceti);"></i> ¿Por qué es vital elegir correctamente?</h3>
+                <p>La deserción universitaria ocurre principalmente por un "choque de realidad". Conoce tu campo laboral real antes de inscribirte.</p>
+            </div>
+            
+            <div class="contenedor-barra-impacto">
+                <div class="info-barra-texto">
+                    <span>Alumnos que eligen mal por falta de orientación:</span>
+                    <span class="porcentaje-destacado">40%</span>
+                </div>
+                <div class="barra-progreso-fondo">
+                    <div class="barra-progreso-lleno"></div>
+                </div>
+                <small style="color: var(--texto-secundario); font-size: 0.85rem;"><i class="fa-solid fa-circle-info"></i> Evita ser parte de las estadísticas utilizando nuestro panel inteligente.</small>
+            </div>
+        </div>
+
+        <div id="menu-inicial" class="card-panel">
+            <h3 style="color: var(--azul-oscuro); margin-bottom: 8px; font-weight: 700;">Conoce tu ingeniería ideal</h3>
+            <p style="color: var(--texto-secundario); margin-bottom: 20px; font-size: 0.95rem; line-height: 1.5;">
+                Selecciona cualquiera de las opciones de abajo para explorar su realidad laboral. <strong>Si tienes dudas, te invitamos a realizar el <a href="#" onclick="abrirTestDesdeMenu(); return false;" style="color: var(--naranja-ceti); font-weight: 600; text-decoration: underline;">Test Vocacional</a></strong> para que identifiques qué carrera se adapta mejor a ti.
+            </p>
+            
+            <div class="carreras-grid">
+                <button class="btn-directo" onclick="verInfo('industrial')"><i class="fa-solid fa-chart-line"></i> Industrial</button>
+                <button class="btn-directo" onclick="verInfo('dev_software')"><i class="fa-solid fa-code"></i> Software</button>
+                <button class="btn-directo" onclick="verInfo('mecatronica')"><i class="fa-solid fa-robot"></i> Mecatrónica</button>
+                <button class="btn-directo" onclick="verInfo('bioquimica')"><i class="fa-solid fa-flask-vial"></i> Bioquímica</button>
+                <button class="btn-directo" onclick="verInfo('civil')"><i class="fa-solid fa-bridge"></i> Civil Sustentable</button>
+                <button class="btn-directo" onclick="verInfo('diseno_elec')"><i class="fa-solid fa-microchip"></i> Diseño Electrónico</button>
+            </div>
+        </div>
+
+        <div id="seccion-inicio" class="card-panel" style="display: none; text-align: center;">
+            <h2>Inicia tu Diagnóstico Personal</h2>
+            <p style="color: var(--texto-secundario);">Queremos conocerte mejor. Por favor ingresa tu nombre.</p>
+            <input type="text" id="nombre-input" placeholder="Escribe tu nombre aquí...">
+            <br>
+            <button class="btn-test-mini" onclick="iniciarTest()">Comenzar Test</button>
+            <br>
+            <a href="#" style="display:inline-block; margin-top:20px; color:var(--texto-secundario); font-weight:600; text-decoration:none;" onclick="regresarMenu()">Volver al Panel</a>
+        </div>
+
+        <div id="quiz-dinamico" class="card-panel" style="display: none; text-align: center;">
+            <h3 id="progreso" style="color:var(--naranja-ceti); margin-bottom: 10px;"></h3>
+            <h2 id="pregunta-texto" style="margin-bottom: 25px; color: var(--azul-oscuro);"></h2>
+            <div id="opciones-contenedor" style="display:flex; flex-direction:column; gap:12px; max-width:500px; margin: 0 auto;"></div>
+            <br>
+            <a href="#" style="display:inline-block; margin-top:20px; color:var(--texto-secundario); font-weight:600; text-decoration:none;" onclick="regresarMenu()">Cancelar y Salir</a>
+        </div>
+
+        <div id="info-carrera" style="display: none; margin-bottom: 25px;"></div>
+
+        <div id="bloque-contacto" class="seccion-contacto card-panel">
+            <h3>¡Comunícate e Inscríbete al CETI Colomos!</h3>
+            <p>Tu futuro como ingeniero exitoso comienza dando el primer paso hoy mismo.</p>
+            
+            <div class="grid-contacto">
+                <div class="item-contacto">
+                    <strong><i class="fa-solid fa-phone"></i> Teléfono General</strong><br>
+                    <span>33 3641 3250</span>
+                </div>
+                <div class="item-contacto">
+                    <strong><i class="fa-solid fa-hashtag"></i> Extensiones</strong><br>
+                    <span>Ext. 275 & 234 (Admisiones)</span>
+                </div>
+                <div class="item-contacto">
+                    <strong><i class="fa-solid fa-envelope"></i> Correo</strong><br>
+                    <a href="mailto:prope.inscripciones@ceti.mx">prope.inscripciones@ceti.mx</a>
+                </div>
+            </div>
+
+            <div style="margin: 25px 0 15px 0; text-align: center;">
+                <h2 style="color: var(--naranja-ceti, #ff9800); font-weight: 800; font-size: 1.6rem; letter-spacing: 0.5px; text-transform: uppercase; margin: 0;">
+                    🚀 ¡CETI, tu mejor opción! ¡Inscríbete!
+                </h2>
+            </div>
+
+            <button class="btn-inscribete" onclick="window.open('https://www.colomos.ceti.mx', '_blank')">
+                <i class="fa-solid fa-graduation-cap"></i> Iniciar Proceso de Inscripción
+            </button>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
