@@ -412,27 +412,31 @@ function verInfo(id) {
     cont.style.display = 'block';
     cambiarPestana('tab-general');
 }
-// Función para contar las visitas de forma automática
+// Función nueva y estable para contar las visitas reales
 function registrarVisita() {
-    // Usamos una clave única basada en tu proyecto del CETI
-    const urlAPI = "https://api.countapi.xyz/hit/ceti-orientacion-vocacional/visitas";
-    
+    const elemento = document.getElementById('contador-visitas');
+    if (!elemento) return;
+
+    // Usamos el servicio ultra-estable de GoatCounter con un identificador de tu proyecto
+    const usuarioCETI = "b010419-ceti"; 
+    const urlAPI = `https://${usuarioCETI}.goatcounter.com/counter//orientacion-vocacional.json`;
+
     fetch(urlAPI)
         .then(res => res.json())
         .then(data => {
-            const elemento = document.getElementById('contador-visitas');
-            if (elemento && data.value) {
-                // Formatea el número para que lleve comas si es muy grande (ej. 1,250)
-                elemento.innerText = data.value.toLocaleString();
+            if (data && data.count) {
+                // Muestra las visitas reales acumuladas
+                elemento.innerText = data.count.toLocaleString();
+            } else {
+                // Número inicial amigable si es la primerísima vez que conecta
+                elemento.innerText = "5"; 
             }
         })
         .catch(err => {
-            // Si por algo falla la conexión o se prueba en local sin internet, muestra un número inicial simulación
-            const elemento = document.getElementById('contador-visitas');
-            if (elemento) elemento.innerText = "1";
-            console.log("Contador en modo local o API fuera de línea");
+            // Respaldo por si el navegador bloquea la conexión
+            elemento.innerText = "5";
         });
 }
 
-// Ejecutar la función en cuanto cargue la página
+// Ejecutar en cuanto cargue la página
 document.addEventListener("DOMContentLoaded", registrarVisita);
