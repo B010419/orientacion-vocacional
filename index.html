@@ -42,7 +42,7 @@
             </div>
 
             <div class="sidebar-carrera-grupo">
-                <span class="carrera-tag-mini bioquimica-color">Bioquímica</span>
+                <span class="carrera-tag-mini biochemica-color">Bioquímica</span>
                 <p class="empresas-lista-texto">Pisa Farmacéutica, Nestlé, Alpura, Laboratorios</p>
             </div>
 
@@ -71,14 +71,21 @@
             </div>
         </div>
 
-        <div id="seccion-video" class="card-panel">
-            <div class="video-texto">
-                <h3><i class="fa-solid fa-circle-play" style="color: #ff0000;"></i> ¿Pensando en estudiar Ingeniería?</h3>
-                <p><strong>¿Vale la pena estudiar una ingeniería?</strong> Te lo mostramos en nuestro video motivacional.</p>
+        <div id="seccion-video" class="card-panel" style="display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;">
+            <div style="flex: 1; min-width: 280px;">
+                <div class="video-texto">
+                    <h3><i class="fa-solid fa-circle-play" style="color: #ff0000;"></i> ¿Pensando en estudiar Ingeniería?</h3>
+                    <p><strong>¿Vale la pena estudiar una ingeniería?</strong> Te lo mostramos en nuestro video motivacional.</p>
+                </div>
+                <a href="https://www.youtube.com/watch?v=FaKy6mEI3Tk" target="_blank" class="btn-link-video" style="display: inline-block; margin-top: 15px;">
+                    <i class="fa-brands fa-youtube"></i> Ver Video
+                </a>
             </div>
-            <a href="https://www.youtube.com/watch?v=FaKy6mEI3Tk" target="_blank" class="btn-link-video">
-                <i class="fa-brands fa-youtube"></i> Ver Video
-            </a>
+            
+            <div style="flex: 1; min-width: 250px; text-align: center;">
+                <img src="eleccion.jpeg" alt="Descubre tu Ingeniería" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.15); border: 2px solid #ff9800;">
+                <p style="font-size: 0.85rem; font-weight: bold; color: #ff9800; margin-top: 8px; text-transform: uppercase; letter-spacing: 0.5px;">🔥 ¡Abre tu mente al éxito!</p>
+            </div>
         </div>
 
         <div id="seccion-desercion" class="card-panel">
@@ -96,6 +103,10 @@
                     <div class="barra-progreso-lleno"></div>
                 </div>
                 <small style="color: var(--texto-secundario); font-size: 0.85rem;"><i class="fa-solid fa-circle-info"></i> Evita ser parte de las estadísticas utilizando nuestro panel inteligente.</small>
+            </div>
+
+            <div style="margin-top: 20px; text-align: center;">
+                <img src="desercion.jpeg" alt="Estudiantes Universitarios" style="max-width: 100%; max-height: 250px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
             </div>
         </div>
 
@@ -166,6 +177,27 @@
         </div>
     </main>
 
+    <!-- NUEVO SCRIPT GLOBAL: Conexión con base de datos real para rastrear visitas únicas -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Conexión externa segura configurada con tu ID de GitHub para evitar cruces
+            const url = 'https://api.counterapi.dev/v1/b010419-orientacion-vocacional/visitas/up';
+
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    if (data && data.value) {
+                        document.getElementById("contador-visitas").innerText = data.value;
+                    } else {
+                        document.getElementById("contador-visitas").innerText = "1";
+                    }
+                })
+                .catch(error => {
+                    console.error("Error cargando el contador remoto:", error);
+                    document.getElementById("contador-visitas").innerText = "Activo";
+                });
+        });
+    </script>
     <script src="script.js"></script>
 </body>
 </html>
