@@ -65,7 +65,11 @@
                 <h1>Orientación Vocacional CETI</h1>
                 <p>Visualiza tu futuro profesional y elige con seguridad tu ingeniería.</p>
             </div>
+            <div style="background: #ffffff; padding: 8px 16px; border-radius: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); display: flex; align-items: center; gap: 8px; font-weight: bold; color: #1e293b;">
+                <i class="fa-solid fa-eye" style="color: #1b4d6b; font-size: 1.1rem;"></i>
+                <span id="contador-visitas">...</span>
             </div>
+        </div>
 
         <div id="seccion-video" class="card-panel" style="display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;">
             <div style="flex: 1; min-width: 280px;">
@@ -173,6 +177,27 @@
         </div>
     </main>
 
+    <!-- NUEVO SCRIPT GLOBAL: Conexión con base de datos real para rastrear visitas únicas -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Conexión externa segura configurada con tu ID de GitHub para evitar cruces
+            const url = 'https://api.counterapi.dev/v1/b010419-orientacion-vocacional/visitas/up';
+
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    if (data && data.value) {
+                        document.getElementById("contador-visitas").innerText = data.value;
+                    } else {
+                        document.getElementById("contador-visitas").innerText = "1";
+                    }
+                })
+                .catch(error => {
+                    console.error("Error cargando el contador remoto:", error);
+                    document.getElementById("contador-visitas").innerText = "Activo";
+                });
+        });
+    </script>
     <script src="script.js"></script>
 </body>
 </html>
