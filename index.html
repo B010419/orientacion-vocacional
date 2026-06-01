@@ -178,26 +178,26 @@
     </main>
 
     <!-- NUEVO SCRIPT GLOBAL: Conexión con base de datos real para rastrear visitas únicas -->
-    <script>
+  <script>
         document.addEventListener("DOMContentLoaded", function() {
-            // Conexión externa segura configurada con tu ID de GitHub para evitar cruces
-            const url = 'https://api.counterapi.dev/v1/b010419-orientacion-vocacional/visitas/up';
+            const namespace = "b010419-orientacion-vocacional";
+            const key = "visitas";
+            const contadorElemento = document.getElementById("contador-visitas");
 
-            fetch(url)
-                .then(response => response.json())
+            fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`)
+                .then(res => res.json())
                 .then(data => {
-                    if (data && data.value) {
-                        document.getElementById("contador-visitas").innerText = data.value;
-                    } else {
-                        document.getElementById("contador-visitas").innerText = "1";
+                    if (data && data.value && contadorElemento) {
+                        contadorElemento.innerText = data.value;
                     }
                 })
                 .catch(error => {
-                    console.error("Error cargando el contador remoto:", error);
-                    document.getElementById("contador-visitas").innerText = "Activo";
+                    console.error("Error al cargar el contador:", error);
+                    if (contadorElemento) {
+                        contadorElemento.innerText = "Activo";
+                    }
                 });
         });
     </script>
-    <script src="script.js"></script>
 </body>
 </html>
